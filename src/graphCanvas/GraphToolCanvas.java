@@ -9,11 +9,13 @@ public class GraphToolCanvas extends Canvas {
 	
 	GraphicsContext gc;
 	
-	public GraphToolCanvas(int width,int height){
-		//this.setWidth(width);
-		//this.setHeight(height);
+	public GraphToolCanvas() {
+		this.maxHeight(Double.MAX_VALUE);
+		this.maxWidth(Double.MAX_VALUE);
 		
 		gc = this.getGraphicsContext2D();
+
+		System.out.format("%e, %e%n", this.getWidth(), this.getHeight());
 		
 		this.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -22,6 +24,7 @@ public class GraphToolCanvas extends Canvas {
 				double x = e.getSceneX();
 				double y = e.getSceneY();
 				
+				System.out.println(e);
 				
 				gc.fillOval(x -10, y - 10, 20, 20);
 			}
