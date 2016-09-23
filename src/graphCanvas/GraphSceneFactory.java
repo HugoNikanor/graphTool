@@ -9,6 +9,10 @@ public class GraphSceneFactory {
 
 	public static GraphScene makeGraphScene() {
 		Parent root = new StackPane();
+
+		GraphToolCanvas canvas = new GraphToolCanvas();
+		CanvasAccess.AddCanvas(canvas);
+
 		GraphScene scene = new GraphScene(root);
 
 		File styleFile = new File("resources/stylesheets/canvas.css");

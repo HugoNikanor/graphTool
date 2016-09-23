@@ -17,11 +17,10 @@ public class GraphScene extends Scene {
 		System.out.println(rootPane.getStyleClass());
 
 		BorderPane borderPane = new BorderPane();
-		borderPane.setCenter(new GraphToolCanvas());
+		borderPane.setCenter(CanvasAccess.RequestActiveCanvas());
 
 		rootPane
 			.getChildren()
 			.add(borderPane);
 	}
-
 }
