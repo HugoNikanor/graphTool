@@ -13,8 +13,6 @@ public class GraphToolCanvas extends Canvas {
 		super(500, 500);
 		
 		gc = this.getGraphicsContext2D();
-
-		System.out.format("%e, %e%n", this.getWidth(), this.getHeight());
 		
 		this.setOnMouseClicked(new EventHandler<MouseEvent>(){
 
@@ -30,8 +28,4 @@ public class GraphToolCanvas extends Canvas {
 		});
 		
 	}
-	
-	
-	
-
 }
