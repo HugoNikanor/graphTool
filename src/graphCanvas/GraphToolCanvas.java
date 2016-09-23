@@ -23,9 +23,20 @@ public class GraphToolCanvas extends Canvas {
 				
 				System.out.println(e);
 				
-				gc.fillOval(x -10, y - 10, 20, 20);
+				//gc.fillOval(x -10, y - 10, 20, 20);
+				placeNode((int) x, (int) y);
 			}
 		});
 		
+	}
+
+	public void placeNode(int x, int y) {
+		System.out.println(this.hashCode());
+		System.out.format("Placing node at (%d, %d)%n", x, y);
+		gc.fillOval(x - 10, y - 10, 20, 20);
+	}
+
+	public GraphicsContext getContext() {
+		return this.getGraphicsContext2D();
 	}
 }

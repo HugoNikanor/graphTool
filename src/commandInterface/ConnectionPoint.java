@@ -11,10 +11,13 @@ public class ConnectionPoint extends ServerSocket {
 
 	private List<Connection> connections;
 
+	private MessageDispatcher dispatcher;
+
 	public ConnectionPoint(int port) throws IOException {
 		super(port);
 
 		connections = new ArrayList<Connection>();
+		dispatcher = new MessageDispatcher();
 
 		System.out.format("Server open on port %d%n", port);
 
@@ -36,7 +39,7 @@ public class ConnectionPoint extends ServerSocket {
 				for(Connection connection : connections) {
 					try {
 						String input = connection.getIn().readLine();
-						String output = InputParser.parse(input);
+						String output = dispatcher.dispatch(input);
 						connection.getOut().println(output);
 					} catch (IOException e) {
 						e.printStackTrace();
