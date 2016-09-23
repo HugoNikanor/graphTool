@@ -20,8 +20,8 @@ public class GraphToolCanvas extends Canvas {
 
 			@Override
 			public void handle(MouseEvent e) {
-				double x = e.getSceneX();
-				double y = e.getSceneY();
+				double x = e.getX();
+				double y = e.getY();
 				
 				System.out.println(e);
 				
