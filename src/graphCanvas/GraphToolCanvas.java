@@ -10,8 +10,7 @@ public class GraphToolCanvas extends Canvas {
 	GraphicsContext gc;
 	
 	public GraphToolCanvas() {
-		this.maxHeight(Double.MAX_VALUE);
-		this.maxWidth(Double.MAX_VALUE);
+		super(500, 500);
 		
 		gc = this.getGraphicsContext2D();
 
