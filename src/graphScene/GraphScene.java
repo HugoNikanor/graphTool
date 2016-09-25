@@ -1,13 +1,15 @@
-package graphCanvas;
+package graphScene;
 
+import graphCanvas.GraphExporterAccess;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class GraphScene extends Scene {
 
-	public GraphScene(Parent root) {
+	protected GraphScene(Parent root) {
 		super(root);
 
 		Pane rootPane = (Pane) root;
@@ -17,7 +19,7 @@ public class GraphScene extends Scene {
 		System.out.println(rootPane.getStyleClass());
 
 		BorderPane borderPane = new BorderPane();
-		borderPane.setCenter(CanvasAccess.RequestActiveCanvas());
+		borderPane.setCenter((Canvas) GraphExporterAccess.request("fx"));
 
 		rootPane
 			.getChildren()

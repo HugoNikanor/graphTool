@@ -2,7 +2,11 @@ package application;
 
 import java.io.IOException;
 
+import abstractGraph.Graph;
 import commandInterface.ConnectionPoint;
+import commandInterface.MessageHandler;
+
+import graphScene.GraphSceneFactory;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -10,11 +14,15 @@ import javafx.stage.Stage;
 
 public class EntryPoint extends Application {
 
-	private ConnectionPoint connectionPoint;
-
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Scene graphScene = graphCanvas.GraphSceneFactory.makeGraphScene();
+		Graph graph = new Graph();
+		MessageHandler handler = new graphCanvas.GraphInterface(graph);
+
+		ConnectionPoint connectionPoint
+			= new ConnectionPoint(12345, handler);
+
+		Scene graphScene = GraphSceneFactory.makeGraphScene(handler);
 
 		primaryStage.setTitle("Graph Tool");
 
@@ -22,9 +30,9 @@ public class EntryPoint extends Application {
 		primaryStage.setMinWidth(500);
 
 		primaryStage.setScene(graphScene);
+
 		primaryStage.show();
 
-		connectionPoint = new ConnectionPoint(12345);
 		primaryStage.setOnCloseRequest(ev -> {
 			try {
 				connectionPoint.close();

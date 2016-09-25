@@ -1,17 +1,19 @@
-package graphCanvas;
+package graphScene;
 
 import java.io.File;
 
+import commandInterface.MessageHandler;
+import graphCanvas.GraphExporterAccess;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
 
 public class GraphSceneFactory {
 
-	public static GraphScene makeGraphScene() {
+	public static GraphScene makeGraphScene(MessageHandler handler) {
 		Parent root = new StackPane();
 
-		GraphToolCanvas canvas = new GraphToolCanvas();
-		CanvasAccess.AddCanvas(canvas);
+		FxCanvas canvas = new FxCanvas(handler);
+		GraphExporterAccess.addExporter(canvas);
 
 		GraphScene scene = new GraphScene(root);
 
